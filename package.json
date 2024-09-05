@@ -28,6 +28,7 @@
     "react-hook-form": "^7.53.0",
     "react-hot-toast": "^2.4.1",
     "resend": "^4.0.0",
+    "shadcn": "^2.0.3",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "toast": "^0.5.4",
