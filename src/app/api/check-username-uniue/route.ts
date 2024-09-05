@@ -49,7 +49,7 @@ export async function GET(request: Request) {
         else {
             return Response.json({
                 success: false,
-                message:'Username is valid (available  )'
+                message:'Username is valid (available )'
             }, {
                 status:400
             })
