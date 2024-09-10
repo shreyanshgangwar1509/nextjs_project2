@@ -42,8 +42,13 @@ export async function GET(request: Request) {
         }, {
             status: 201
         }) 
-    } catch (error) {
-        
+    } catch (error:any) {
+        return Response.json({
+            success: false,
+            messages:error.messages 
+        }, {
+            status: 500
+        }) 
     }
 
 }

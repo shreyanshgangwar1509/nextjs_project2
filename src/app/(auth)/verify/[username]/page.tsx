@@ -1,6 +1,11 @@
 'use client'
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/Form';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/components/ui/use-toast';
 import { verifySchema } from '@/schemas/verifySchema';
-import { ApiResonce } from '@/types/ApiResponse';
+import { ApiResponse } from '@/types/ApiResponse';
+import { zodResolver } from '@hookform/resolvers/zod';
 import axios, { AxiosError } from 'axios';
 import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -27,11 +32,11 @@ const VerifyAccount = () => {
       router.replace('sign-in')
     } catch (error) {
       console.error("Error in singing up ", error);
-      const axiosError = error as AxiosError<ApiResonce>;
+      const axiosError = error as AxiosError<ApiResponse>;
       let errorMessage = axiosError.response?.data.message;
       toast({
         title: "Signup failed",
-        deccription: errorMessage,
+        description: errorMessage,
         variant:"destructive"
       })
       
@@ -45,19 +50,18 @@ const VerifyAccount = () => {
         <form onSubmit={form.handleSubmit(onSubmit)}
           className='space-y-6'>
           <FormField
+            name="code"
             control={form.control}
-            name="usernaem"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>OPT</FormLabel>
                 <FormControl>
-                  <Input placeholder="username" {...field}
+                  <Input placeholder="otp" {...field}
                     />
                   
                 </FormControl>
-                {isSubmitting && <Loader2 className="animate-spin" />}
-                <p className={`text-sm ${usernameMessage === "Username is valid (available )" ? 'text-green-500':'text-red-600'}`}></p>
-                <FormMessage/>
+                
+                
             </FormItem>
                 )} />
               <Button type="submit">Submit</Button>
@@ -69,4 +73,4 @@ const VerifyAccount = () => {
   )
 }
 
-export default page
+export default VerifyAccount

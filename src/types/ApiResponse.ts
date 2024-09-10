@@ -1,5 +1,5 @@
 import { Message } from "@/model/User";
-export interface ApiResonce {
+export interface ApiResponse {
     success: boolean,
     message: string,
     isAcceptingMessage?: boolean,
